@@ -9,7 +9,9 @@ public class Member {
 	private String	lastName;
 	private String	state;
 	private String	zip;
-
+ 
+	
+	
 	public void setId( String id ) {
 		this.id = id;
 	}
@@ -67,8 +69,7 @@ public class Member {
 	}
 
 	public String toCSVString( ) {
-		//TODO implement this
-//		return null;
+		
 		String ans = id + "," + firstName + "," + lastName + "," + address + "," + city + "," + zip;
 		
 		return ans;

@@ -53,14 +53,19 @@ public abstract class MemberFileConverter {
 	}
 
 	private void writeMembers( File outputFile, MemberExporter exporter, List< Member > members ) throws IOException {
-		Writer writer = new FileWriter( outputFile ,true);
+		File outputDirectory = outputFile.getParentFile();
+	    if (!outputDirectory.exists() && !outputDirectory.mkdirs()) {
+	        throw new IOException("Unable to create output directory: " + outputDirectory.getAbsolutePath());
+	    }
 
-		for ( Member member: members ) {
-			exporter.writeMember( member, writer );
-		}
+	    Writer writer = new FileWriter(outputFile, true);
 
-		writer.flush( );
-		writer.close( );
+	    for (Member member : members) {
+	        exporter.writeMember(member, writer);
+	    }
+
+	    writer.flush();
+	    writer.close();
 	}
 
 }

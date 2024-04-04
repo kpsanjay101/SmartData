@@ -26,37 +26,36 @@ public class Main extends MemberFileConverter {
 	}
 
 	@Override
-	protected List< Member > getNonDuplicateMembers( List< Member > membersFromFile ) {
-
-	
-		
-		Map<String, Member> memberMap = new HashMap<>();
-        for (Member member : membersFromFile) {
-            memberMap.put(member.getId(), member);
+	protected List< Member > getNonDuplicateMembers( List< Member > membersFile ) {
+		List<Member> list = new ArrayList<>();
+		Map<Member,Integer> map = new HashMap<>();
+        for (Member member : membersFile) {
+            if(!map.containsKey(map)) {
+            	map.put(member, 1);
+            	list.add(member);
+            }
         }
-        return new ArrayList<>(memberMap.values());
+        return list;
 	}
 
 	@Override
-	protected Map< String, List< Member >> splitMembersByState( List< Member > validMembers ) {
+	protected Map<String,List<Member>> splitMembersByState(List<Member> validMembers){
 	
 		
-		Map<String, List<Member>> membersState = new HashMap<>();
+		Map<String, List<Member>> map = new HashMap<>();
         for (Member member : validMembers) {
             String state = member.getState();
-            if (!membersState.containsKey(state)) {
-            	membersState.put(state, new ArrayList<>());
-            }else {
-            	List<Member> list;
-            	list = membersState.get(state);
+            if (!map.containsKey(state)) {
+            	List<Member> list = new ArrayList<>();
             	list.add(member);
-            			
-            	 membersState.put(state, list) ;
+            	map.put(state, list);
+            }else {
+            	map.get(state).add(member);
             }
             
            
         }
-        return membersState;
+        return map;
 	}
 
 	public static void main( String[] args ) {

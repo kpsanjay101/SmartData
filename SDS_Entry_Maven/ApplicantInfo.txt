@@ -1,5 +1,5 @@
 Please enter your personal information :
 
-	Name:Sanjay_Kumar
+	Name: Sanjay_Kumar
 	Email ID:sanjayhit96@gmail.com
 	Phone #:7808600828

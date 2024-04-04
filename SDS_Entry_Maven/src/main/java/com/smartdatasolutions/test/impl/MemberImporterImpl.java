@@ -20,12 +20,16 @@ public class MemberImporterImpl implements MemberImporter {
 		 List<Member> members = new ArrayList();
 
 		try (BufferedReader br = new BufferedReader( new FileReader( inputFile ) )) {
-			String line;
-            while ((line = br.readLine()) != null) {
-                Member member = parseMember(line);
-                if (member != null) {
-                    members.add(member);
-                }
+			String line = br.readLine();
+			
+            while (line != null) {
+            	
+            	line = br.readLine();
+            	
+            	if(line != null) {
+            		 members.add(parseMember(line));
+            	}
+                
             }
 		}
 
@@ -34,20 +38,17 @@ public class MemberImporterImpl implements MemberImporter {
 	
 	private Member parseMember(String line) {
         Member member = new Member();
-        try {
-            member.setId(line.substring(0, 12).trim());
-            member.setLastName(line.substring(12, 37).trim());
-            member.setFirstName(line.substring(37, 62).trim());
-            member.setAddress(line.substring(62, 92).trim());
-            member.setCity(line.substring(92, 112).trim());
-            member.setState(line.substring(112, 116).trim());
-            member.setZip(line.substring(116, 121).trim());
-            return member;
-        } catch (StringIndexOutOfBoundsException e) {
-            // In case of incorrect format or empty lines
-           e.printStackTrace();
-        }
+        
+        member.setId(line.substring(0, 12).trim());
+        member.setAddress(line.substring(62, 92).trim());
+        member.setCity(line.substring(92, 112).trim());
+        member.setFirstName(line.substring(37, 62).trim());
+        member.setLastName(line.substring(12, 37).trim());
+        member.setState(line.substring(112, 116).trim());
+        member.setZip(line.substring(116).trim());
+               
         return member;
+              
     }
 
 }
