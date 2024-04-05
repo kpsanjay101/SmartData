@@ -65,9 +65,9 @@ public class Main extends MemberFileConverter {
 //			 System.out.println("lin2");
 	            Main main = new Main();
 //				 System.out.println("lin3");
-	            File inputFileMember = new File(".\\Members.txt");
+	            File inputFileMember = new File("Members.txt");
 //				 System.out.println("lin4");
-	            String outputFilePath = "target/output"; 
+	            String outputFilePath = "OutPut_File"; 
 //				 System.out.println("lin5");
 	            String outputFileName = "outputFile.csv"; 
 //				 System.out.println("lin6");
