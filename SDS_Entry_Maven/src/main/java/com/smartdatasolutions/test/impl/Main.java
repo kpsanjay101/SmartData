@@ -30,7 +30,7 @@ public class Main extends MemberFileConverter {
 		List<Member> list = new ArrayList<>();
 		Map<Member,Integer> map = new HashMap<>();
         for (Member member : membersFile) {
-            if(!map.containsKey(map)) {
+            if(!map.containsKey(member)) {
             	map.put(member, 1);
             	list.add(member);
             }
@@ -60,7 +60,6 @@ public class Main extends MemberFileConverter {
 
 	public static void main( String[] args ) {
 //		 System.out.println("lin1");
-		
 
 		 try {
 //			 System.out.println("lin2");

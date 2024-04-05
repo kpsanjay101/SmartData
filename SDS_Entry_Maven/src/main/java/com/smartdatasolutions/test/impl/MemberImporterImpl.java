@@ -39,7 +39,7 @@ public class MemberImporterImpl implements MemberImporter {
 	private Member parseMember(String line) {
         Member member = new Member();
         
-        member.setId(line.substring(0, 12).trim());
+        member.setId(line.substring(0, 12).trim());//dffhfdhfdjfgdjgfgdfdf
         member.setAddress(line.substring(62, 92).trim());
         member.setCity(line.substring(92, 112).trim());
         member.setFirstName(line.substring(37, 62).trim());
